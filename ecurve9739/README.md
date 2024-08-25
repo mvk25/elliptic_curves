@@ -18,7 +18,7 @@ The points on the curve $E$ are pairs $(x, y)$ that satisfy the equation. These 
 
 ## Finite Field Arithmetic
 
-To fully understand elliptic curves over finite fields, I studied finite field arithmetic, which involves operations within a finite set of numbers. In $\mathbb{F}_{17}$, all operations (addition, multiplication, etc.) are performed modulo 17.
+To fully understand elliptic curves over finite fields, I studied finite field arithmetic, which involves operations within a finite set of numbers. In $\mathbb{F}_{9739}$, all operations (addition, multiplication, etc.) are performed modulo 9737.
 
 ### Key Operations
 
@@ -43,7 +43,7 @@ These operations allow us to compute multiples of a point, which is the foundati
 
 ## The Generator Point
 
-In ECC, a generator point $G$ is used to produce other points on the curve through repeated addition. For a given private key $k$, the corresponding public key is $kG$. The security of ECC relies on the difficulty of solving the discrete logarithm problem, i.e., finding $k$ given $kG$ and $G$.
+The Generator point for the equation $E : Y^2 = X^3 + 497X + 1768 \mod 9739$ which i have used for this specific curve is $G(8045, 6936)$. This point is already precalculated and it will generate all the other points in this field modulo 9739 on this equation. Running this program will produce all the points up until the last point where the infinity $O$ is produced. In ECC, a generator point $G$ is used to produce other points on the curve through repeated addition. For a given private key $k$, the corresponding public key is $kG$. The security of ECC relies on the difficulty of solving the discrete logarithm problem, i.e., finding $k$ given $kG$ and $G$.
 
 ## Algebraic Structures and the Discrete Logarithm Problem
 
