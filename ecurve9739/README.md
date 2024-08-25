@@ -8,7 +8,9 @@ Over the past few months, I have embarked on a journey to understand elliptic cu
 
 The elliptic curve I explored is defined by the equation:
 
-\[ E : Y2 = X3 + 497X + 1768 mod 9739 \]
+$$
+E: Y^2 = X^3 + 497X + 1768 \mod 9739
+$$
 
 This equation defines an elliptic curve over the finite field \( \mathbb{F}_{17} \), where 17 is a prime number. By iterating through all possible values of \( x \) and solving for \( y \), I calculated the valid points on this curve.
 
@@ -16,19 +18,41 @@ This equation defines an elliptic curve over the finite field \( \mathbb{F}_{17}
 
 The points on the curve \( E \) are pairs \( (x, y) \) that satisfy the equation. These points are crucial in ECC, as they represent the possible values used in cryptographic operations.
 
-
-
 ## Finite Field Arithmetic
 
 To fully understand elliptic curves over finite fields, I studied finite field arithmetic, which involves operations within a finite set of numbers. In \( \mathbb{F}_{17} \), all operations (addition, multiplication, etc.) are performed modulo 17.
 
 ### Key Operations
 
-- **Addition:** For two elements \( a \) and \( b \) in \( \mathbb{F}_{p} \), \( (a + b) \mod p \).
-- **Multiplication:** \( (a \times b) \mod p \).
-- **Negation:** The additive inverse \( -a \) is such that \( a + (-a) \equiv 0 \mod p \).
-- **Square Root:** Solving \( y^2 \equiv x \mod p \) for \( y \).
-- **Multiplicative Inverse:** For \( a \) in \( \mathbb{F}_{p} \), find \( b \) such that \( (a \times b) \equiv 1 \mod p \).
+- **Addition:** For two elements \( a \) and \( b \) in \( \mathbb{F}_{p} \), the addition operation is defined as:
+
+  $$
+  (a + b) \mod p
+  $$
+
+- **Multiplication:** The multiplication operation for two elements \( a \) and \( b \) in \( \mathbb{F}_{p} \) is:
+
+  $$
+  (a \times b) \mod p
+  $$
+
+- **Negation:** The additive inverse \( -a \) is the value such that:
+
+  $$
+  a + (-a) \equiv 0 \mod p
+  $$
+
+- **Square Root:** The square root operation involves solving the congruence:
+
+  $$
+  y^2 \equiv x \mod p
+  $$
+
+- **Multiplicative Inverse:** For an element \( a \) in \( \mathbb{F}_{p} \), the multiplicative inverse \( b \) is such that:
+
+  $$
+  (a \times b) \equiv 1 \mod p
+  $$
 
 These operations are essential for implementing elliptic curve addition and multiplication.
 
@@ -38,8 +62,29 @@ One of the most fascinating aspects of ECC is the point addition operation. Give
 
 ### Point Addition and Doubling
 
-- **Point Addition:** Given two distinct points \( P(x_1, y_1) \) and \( Q(x_2, y_2) \), the sum \( R(x_3, y_3) \) is calculated using the slope between them.
-- **Point Doubling:** If \( P = Q \), the slope is calculated differently to account for the tangent at \( P \).
+- **Point Addition:** Given two distinct points \( P(x_1, y_1) \) and \( Q(x_2, y_2) \), the sum \( R(x_3, y_3) \) is calculated using the slope \( m \) between them:
+
+  $$
+  m = \frac{y_2 - y_1}{x_2 - x_1} \mod p
+  $$
+
+  The coordinates of the resulting point \( R(x_3, y_3) \) are then computed as:
+
+  $$
+  x_3 = m^2 - x_1 - x_2 \mod p
+  $$
+
+  $$
+  y_3 = m(x_1 - x_3) - y_1 \mod p
+  $$
+
+- **Point Doubling:** When \( P = Q \), the slope \( m \) is calculated using a different formula to account for the tangent at \( P \):
+
+  $$
+  m = \frac{3x_1^2 + a}{2y_1} \mod p
+  $$
+
+  The coordinates of the resulting point \( R(x_3, y_3) \) are calculated similarly.
 
 These operations allow us to compute multiples of a point, which is the foundation of generating public and private keys in ECC.
 
@@ -60,5 +105,3 @@ Learning finite field math and the properties of elliptic curves has given me a 
 This project has been an enlightening exploration into the world of elliptic curve cryptography. I have gained a deeper understanding of finite field arithmetic, point operations, and the discrete logarithm problem. ECC is a powerful and practical tool in modern cryptography, and my work on this simple curve has been a foundational step in understanding how cryptographic keys are securely generated and managed.
 
 I hope this documentation provides a clear and concise overview of the principles I have learned, and serves as a useful resource for anyone interested in elliptic curve cryptography.
-
-
