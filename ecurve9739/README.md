@@ -10,7 +10,7 @@ The elliptic curve I explored is defined by the equation:
 
 $E : Y^2 = X^3 + 497X + 1768 \mod 9739$
 
-This equation defines an elliptic curve over the finite field $\mathbb{F}_{17}$, where 17 is a prime number. By iterating through all possible values of $x$ and solving for $y$, I calculated the valid points on this curve.
+This equation defines an elliptic curve over the finite field $\mathbb{F}_{9739}$. By iterating through all possible values of $x$ and solving for $y$, I calculated the valid points on this curve.
 
 ### Points on the Curve
 
