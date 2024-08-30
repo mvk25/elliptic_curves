@@ -105,17 +105,20 @@ fn main() {
     let one = BigInt::one();
     let mut i = zero.clone();
 
-    let mut elements = vec![];
-    while i < p {
-        elements.push(elliptic_equation(i.clone(), p.clone()));
-        i += &one;
-    }
+    // This Tonelli Shanks Algorithm is slow but it is a method used to compute the square root of a number y^2 modulo p
+    // There is a simpler method down below to compute the x_new and y_new
+    // let mut elements = vec![];
+    // while i < p {
+    //     elements.push(elliptic_equation(i.clone(), p.clone()));
+    //     i += &one;
+    // }
 
-    for (idx, i) in elements.iter().enumerate() {
-        if let Some(m) = tonelli_shanks(p.clone(), i.clone()) {
-            table.insert(idx, Some((m.clone(), p.clone() - m.clone())));
-        }
-    }
+
+    // for (idx, i) in elements.iter().enumerate() {
+    //     if let Some(m) = tonelli_shanks(p.clone(), i.clone()) {
+    //         table.insert(idx, Some((m.clone(), p.clone() - m.clone())));
+    //     }
+    // }
 
     let (g_x, g_y) = (BigInt::from(8045), BigInt::from(6936));
     let slope = repeater_slope(g_x.clone(), g_y.clone(), p.clone());
@@ -125,11 +128,11 @@ fn main() {
     for i in 0..9739 {
         if i == 0 {
             (x_new, y_new) = generate_points(slope.clone(), g_x.clone(), g_x.clone(), g_y.clone(), p.clone());
-            println!("{} {}", x_new, y_new);
+            println!("Private Key: {} {} {}", i, x_new, y_new);
             continue;
         }
         let cont_slope = cont_slope(g_x.clone(), g_y.clone(), x_new.clone(), y_new.clone(), p.clone());
         (x_new, y_new) = generate_points(cont_slope.clone(), g_x.clone(), x_new.clone(), g_y.clone(), p.clone());
-        println!("{} {}", x_new, y_new);
+        println!("Private Key: {i} {} {}", x_new, y_new);
     }
 }
