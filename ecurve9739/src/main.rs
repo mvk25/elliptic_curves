@@ -100,10 +100,10 @@ fn cont_slope(x_1: BigInt, y_1: BigInt, x_2: BigInt, y_2: BigInt, p: BigInt) -> 
 fn main() {
     // E : Y2 = X3 + 497X + 1768 mod 9739
     let p: BigInt = "9739".parse().unwrap();
-    let mut table: HashMap<usize, Option<(BigInt, BigInt)>>= HashMap::new();
-    let zero = BigInt::zero();
-    let one = BigInt::one();
-    let mut i = zero.clone();
+    // let mut table: HashMap<usize, Option<(BigInt, BigInt)>>= HashMap::new();
+    // let zero = BigInt::zero();
+    // let one = BigInt::one();
+    // let mut i = zero.clone();
 
     // This Tonelli Shanks Algorithm is slow but it is a method used to compute the square root of a number y^2 modulo p
     // There is a simpler method down below to compute the x_new and y_new
