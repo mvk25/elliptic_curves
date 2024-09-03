@@ -43,11 +43,12 @@ The `secp256k1` curve is a Koblitz curve defined over the finite field $\( \math
   ```
 
 ### Finite Field $\( \mathbb{F}_p \)$
-
+```
 $\[
 p = \text{0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFC2F} \\
 = 2^{256} - 2^{32} - 2^{9} - 2^{8} - 2^{7} - 2^{6} - 2^{4} - 1
 \]$
+```
 
 ### Elliptic Curve Equation
 
@@ -101,9 +102,10 @@ The implementation is written in Rust using the `secp256k1` crate to handle elli
 
 To run the project:
 
-1. Install Rust from [here](https://www.rust-lang.org/tools/install).
+1. Install Rust from [here](https://github.com/mvk25/elliptic_curves.git).
 2. Clone the repository.
 3. Run the project:
  ```bash
+ cd ecdsa
  cargo run
  ```
