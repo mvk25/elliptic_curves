@@ -90,7 +90,7 @@ b = 00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000007
 
 ## Project Structure
 
-The implementation is written in Rust using the `secp256k1` crate to handle elliptic curve operations. Below is an outline of the key functionality:
+The implementation is written in Rust using the `secp256k1` curve to handle elliptic curve operations. Below is an outline of the key functionality:
 
 - **Key generation**: Generates a private key and derives the corresponding public key.
 - **Signing**: Signs a message using the private key.
